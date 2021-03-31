@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, Java,JVM,Mysql,Spring,SpringMVC,Mybatis,Redies">
+    <meta name="keywords" content="Java,JVM,Mysql,Spring,SpringMVC,Mybatis,Redies">
     <meta name="description" content="专注于Web,分享生活,分享知识">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | Tricky</title>
+    <title>Tricky</title>
     <link rel="icon" type="image/jpeg" href="/favicon.jpg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -443,14 +443,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-28
+                    2021-03-31
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-28
+                    2021-03-31
                 </div>
                 
 
@@ -472,20 +472,94 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new &quot;My New Post&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <!-- 
+			<script>
+				console.error("Error: [hexo-tag-aplayer] Unrecognized tag argument(2): autoplay=false");
+			</script> -->
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=430 height=86 src="//music.163.com/outchain/player?type=2&id=114389&auto=0&height=66"></iframe>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<hr>
+<p>title: 算法题<br>date: 2021-03-31 20:36:17<br>type: “算法题”<br>layout: “about”</p>
+<hr>
+<h2 id="最长回文子串"><a href="#最长回文子串" class="headerlink" title="最长回文子串"></a>最长回文子串</h2><p>###问题描述</p>
+<p>给你一个字符串s，找到s中最长的回文子串。</p>
+<p>####示例：<br>输入:s=”babad”<br>输出:”baa”<br>解释:”aba”同样符合题意</p>
+<h2 id="方法一：暴力求解"><a href="#方法一：暴力求解" class="headerlink" title="方法一：暴力求解"></a>方法一：暴力求解</h2><p>暴力求解是最容易想到的，要截取字符串的所有子串，然后再判断这些子串中哪些是回文<br>的，最后返回回文子串中最长的即可。</p>
+<p>这里我们可以使用两个变量，一个记录最长回文子串开始的位置，一个记录最长回文子串<br>的长度，最后再截取。代码如下</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">public String longestPalindrome(String s)&#123;
+	if(s.length()&lt;2)&#123; return s&#125;;
+	int start&#x3D;0,MaxLen&#x3D;0;
+	for(int i&#x3D;0;i&lt;s.length()-1;i++)&#123;
+		for(int j&#x3D;0;j&lt;s.length();j++)&#123;
+			if(j-i&lt;MaxLen)&#123;
+				continue;
+			&#125;
+			if(isPalindrome(s,i,j))&#123;
+				if(MaxLen&lt;j-i+1)&#123;
+					start&#x3D;i;
+					MaxLen&#x3D;j-i+1;
+				&#125;
+			&#125;
+		&#125;
+	&#125;
+	return s.substring(start,start+MaxLen);
+&#125;
+ 
+private boolean isPalindrome(String s,int i,int j)&#123;
+	while(i&lt;j)&#123;
+		if(s.charAt(i++) !&#x3D; s.charAt(j--)&#123;
+			return false;
+		&#125;
+	&#125;
+	return true;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>##方法二： 动态规划<br>定义二维数组dp[length][length]，如果dp[left][right]为true，则表示字符串从left到right<br>是回文子串，如果dp[left][right]为false，则表示字符串从left到right不是回文子串。</p>
+<p>如果dp[left+1][right -1]为true，我们判断s.charAt(left)和s.charAt(right)是否相等，如果<br>相等，那么dp[left][right]肯定也是回文子串，否则dp[left][right]一定不是回文子串。</p>
+<p>所以我们可以找出递推公式</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">dp[left][right]&#x3D;s.charAt(left)&#x3D;&#x3D;s.charAt(right)&amp;&amp;dp[left+1][right-1]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+<p>有了递推公式，还要确定边界条件：<br>如果s.charAt(left)！=s.charAt(right)，那么字符串从left到right是不可能构成子串<br>的，直接跳过即可。</p>
+<p>如果s.charAt(left)==s.charAt(right)，字符串从left到right能不能构成回文子串还<br>需要进一步判断<br>    如果left==right，也就是说只有一个字符，我们认为他是回文子串。即dp[left][right]=true（left==right）<br>    如果right-left&lt;=2，类似于”aa”，或者”aba” ，我们认为他是回文子串 。 即dp[left][right]=true（right-left&lt;=2）<br>    如果right-left&gt;2，我们只需要判断dp[left+1][right-1]是否是回文子串，才能确定dp[left][right]是否为true还是false。<br>即dp[left][right]=dp[left+1][right -1]。</p>
+<p>代码如下：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"> 1public static String longestPalindrome(String s) &#123;
+ 2     &#x2F;&#x2F;边界条件判断
+ 3     if (s.length() &lt; 2)
+ 4        return s;
+ 5     &#x2F;&#x2F;start表示最长回文串开始的位置，
+ 6     &#x2F;&#x2F;maxLen表示最长回文串的长度
+ 7     int start &#x3D; 0, maxLen &#x3D; 1;
+ 8     int length &#x3D; s.length();
+ 9     boolean[][] dp &#x3D; new boolean[length][length];
+10     for (int right &#x3D; 1; right &lt; length; right++) &#123;
+11           for (int left &#x3D; 0; left &lt; right; left++) &#123;
+12               &#x2F;&#x2F;如果两种字符不相同，肯定不能构成回文子串
+13               if (s.charAt(left) !&#x3D; s.charAt(right))
+14                   continue;
+15
+16               &#x2F;&#x2F;下面是s.charAt(left)和s.charAt(right)两个
+17               &#x2F;&#x2F;字符相同情况下的判断
+18               &#x2F;&#x2F;如果只有一个字符，肯定是回文子串
+19               if (right &#x3D;&#x3D; left) &#123;
+20               dp[left][right] &#x3D; true;
+21               &#125; else if (right - left &lt;&#x3D; 2) &#123;
+22               &#x2F;&#x2F;类似于&quot;aa&quot;和&quot;aba&quot;，也是回文子串
+23               dp[left][right] &#x3D; true;
+24               &#125; else &#123;
+25               &#x2F;&#x2F;类似于&quot;a******a&quot;，要判断他是否是回文子串，只需要
+26               &#x2F;&#x2F;判断&quot;******&quot;是否是回文子串即可
+27               dp[left][right] &#x3D; dp[left + 1][right - 1];
+28               &#125;
+29               &#x2F;&#x2F;如果字符串从left到right是回文子串，只需要保存最长的即可
+30               if (dp[left][right] &amp;&amp; right - left + 1 &gt; maxLen) &#123;
+31               maxLen &#x3D; right - left + 1;
+32               start &#x3D; left;
+33            &#125;
+34    &#125;
+35    &#x2F;&#x2F;截取最长的回文子串
+36    return s.substring(start, start + maxLen);
+37 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -511,7 +585,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Q-CUI.github.io/2021/03/28/hello-world/">http://Q-CUI.github.io/2021/03/28/hello-world/</a>
+                    <a href="http://Q-CUI.github.io/2021/03/31/%E5%90%AC%E5%90%AC%E9%9F%B3%E4%B9%90/">http://Q-CUI.github.io/2021/03/31/%E5%90%AC%E5%90%AC%E9%9F%B3%E4%B9%90/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -722,13 +796,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/03/31/%E5%90%AC%E5%90%AC%E9%9F%B3%E4%B9%90/">
+                <a href="/2021/03/31/%E7%AE%97%E6%B3%95%E9%A2%98/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="算法题">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">算法题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -756,7 +830,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2021/03/28/hello-world/">
@@ -786,7 +860,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
